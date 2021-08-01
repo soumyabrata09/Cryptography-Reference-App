@@ -62,7 +62,7 @@ After running the application goto
 
 _TODO_
  - [x] Create a Generic SLF4J logger which can be inject to gereric bean generator and can be used across the project 
- - [ ] Implement Swagger
+ - [x] Implement Swagger
  - [ ] Onboard the application to Jenkins
  - [ ] Dockerized this application
  - [ ] Provide an endpoint for a graceful shutdown
