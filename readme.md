@@ -27,6 +27,8 @@ Add the following dependency into the pom.xml
 
 Change `server.port=<Desired Port>` in the application.yaml file
 
+Execute `mvn spring-boot:run`
+
 **Exposed Endpoints** 
 - > v1/encrypt
   ````
