@@ -1,7 +1,6 @@
 package com.sam09.cryptography.referenceapp.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
@@ -13,7 +12,7 @@ public class CryptoData {
     @JsonProperty("name")
     private String name;
 
-    @NotNull
+    @NotNull(message = "value field can not be null")
     @JsonProperty("value")
     private String value;
 

@@ -2,6 +2,8 @@ package com.sam09.cryptography.referenceapp.controller;
 
 import com.sam09.cryptography.referenceapp.model.CryptoData;
 import com.sam09.cryptography.referenceapp.service.ICryptographyService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.io.UnsupportedEncodingException;
@@ -17,6 +19,7 @@ import java.util.concurrent.CompletableFuture;
 @CrossOrigin(origins = "*")
 public class ReferenceController {
 
+    private static final Logger log = LoggerFactory.getLogger(ReferenceController.class);
     @Autowired
     ICryptographyService service;
 
@@ -27,12 +30,14 @@ public class ReferenceController {
     @RequestMapping(method = RequestMethod.POST, value = "/encrypt")
     @ResponseBody
     public CompletableFuture<CryptoData> encodeData(@RequestBody CryptoData data) throws UnsupportedEncodingException {
+        log.info("Encrypt API Called");
         return CompletableFuture.completedFuture(service.getEncryptedData(data));
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/decrypt")
     @ResponseBody
     public CompletableFuture<CryptoData> decodeData(@RequestBody CryptoData data){
+        log.info("Decrypt API Called");
         return CompletableFuture.completedFuture(service.getDecryptedData(data));
     }
 

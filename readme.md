@@ -42,8 +42,24 @@ Execute `mvn spring-boot:run`
   -H 'Content-Type:application/json' \
   -d '{"name":"Soumyabrata09","value":"VGltZSBpcyBzb21ldGhpbmcgdGhleSBzYXksIHdlIG5ldmVyIHVuZGVyc3RhbmQgdW50aWwgaXQgc2xpcHMgYXdheQ"}'
   ````
-  
-  
+ **Swagger Implementation**
+ Include the following dependencies in the pom file
+````
+  <dependency>
+    <groupId>io.springfox</groupId>
+	<artifactId>springfox-swagger2</artifactId>
+	<version>3.0.0</version>
+  </dependency>
+  <dependency>
+  	<groupId>io.springfox</groupId>
+  	<artifactId>springfox-swagger-ui</artifactId>
+  	<version>2.9.2</version>
+  </dependency>
+```` 
+
+After running the application goto 
+> `http://localhost:8080/swagger-ui.html` 
+
 _TODO_
  - [x] Create a Generic SLF4J logger which can be inject to gereric bean generator and can be used across the project 
  - [ ] Implement Swagger
