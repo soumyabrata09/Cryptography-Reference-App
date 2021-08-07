@@ -1,9 +1,7 @@
 package com.sam09.cryptography.referenceapp.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sam09.cryptography.referenceapp.model.CryptoData;
 import com.sam09.lib.cryptographystarter.service.CryptoService;
-import com.sam09.lib.sbjacksonstarter.jackson.configuration.SerializerConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,6 @@ public class CryptographyDataServiceImpl implements ICryptographyService{
 
     @Autowired
     CryptoService cryptoService;
-    /*private ObjectMapper objectMapper;*/
 
     @Override
     public CryptoData getEncryptedData(CryptoData cryptoData) throws UnsupportedEncodingException {
@@ -32,8 +29,4 @@ public class CryptographyDataServiceImpl implements ICryptographyService{
         log.info("Decoded Data: " + cryptoData.getValue());
         return cryptoData;
     }
-
-    /*public void checkingObjectMapper(){
-        ObjectMapp
-    }*/
 }

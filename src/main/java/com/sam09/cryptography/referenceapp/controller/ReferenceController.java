@@ -1,5 +1,10 @@
+/**
+ * @author Soumya09
+ *
+ */
 package com.sam09.cryptography.referenceapp.controller;
 
+import com.sam09.cryptography.referenceapp.constants.ApplicationConstants;
 import com.sam09.cryptography.referenceapp.model.CryptoData;
 import com.sam09.cryptography.referenceapp.service.ICryptographyService;
 import org.slf4j.Logger;
@@ -9,17 +14,13 @@ import org.springframework.web.bind.annotation.*;
 import java.io.UnsupportedEncodingException;
 import java.util.concurrent.CompletableFuture;
 
-/**
- * @author Soumya09
- *
- */
-
 @RestController
-@RequestMapping(value = "/v1")
-@CrossOrigin(origins = "*")
+@RequestMapping(value = ApplicationConstants.ROOT)
+@CrossOrigin(origins = ApplicationConstants.CROSS_ORIGIN_VALUE)
 public class ReferenceController {
 
     private static final Logger log = LoggerFactory.getLogger(ReferenceController.class);
+
     @Autowired
     ICryptographyService service;
 
@@ -27,14 +28,14 @@ public class ReferenceController {
         this.service = service;
     }*/
 
-    @RequestMapping(method = RequestMethod.POST, value = "/encrypt")
+    @RequestMapping(method = RequestMethod.POST, value = ApplicationConstants.ENCRYPT)
     @ResponseBody
     public CompletableFuture<CryptoData> encodeData(@RequestBody CryptoData data) throws UnsupportedEncodingException {
         log.info("Encrypt API Called");
         return CompletableFuture.completedFuture(service.getEncryptedData(data));
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/decrypt")
+    @RequestMapping(method = RequestMethod.POST, value = ApplicationConstants.DECRYPT)
     @ResponseBody
     public CompletableFuture<CryptoData> decodeData(@RequestBody CryptoData data){
         log.info("Decrypt API Called");

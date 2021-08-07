@@ -20,10 +20,19 @@ mvn clean install
 To run Locally:
 Add the following dependency into the pom.xml
 ````
-    <groupId>com.sam09.lib</groupId>
-    <artifactId>cryptography-starter</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <dependency>
+        <groupId>com.sam09.lib</groupId>
+        <artifactId>cryptography-starter</artifactId>
+        <version>1.0.0-SNAPSHOT</version> 
+    <dependency>
+
+    <dependency>
+	    <groupId>com.sam09.lib</groupId>
+	    <artifactId>sb-jackson-starter</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</dependency>
 ````
+> version tag can be used from the jfrog artifactorty 
 
 Change `server.port=<Desired Port>` in the application.yaml file
 
@@ -32,13 +41,13 @@ Execute `mvn spring-boot:run`
 **Exposed Endpoints** 
 - > v1/encrypt
   ````
-  curl -X POST localhost:8080/v1/encrypt \
+  curl -X POST localhost:8080/v1/crypto-service/encrypt \
   -H 'Content-Type: application/json' \
   -d '{"name":"Soumyabrata09","value":"Time is something they say, we never understand until it slips away"}'
   ````
 - > v1/decrypt
   ````
-  curl -X POST localhost:8080/v1/decrypt \
+  curl -X POST localhost:8080/v1/crypto-service/decrypt \
   -H 'Content-Type:application/json' \
   -d '{"name":"Soumyabrata09","value":"VGltZSBpcyBzb21ldGhpbmcgdGhleSBzYXksIHdlIG5ldmVyIHVuZGVyc3RhbmQgdW50aWwgaXQgc2xpcHMgYXdheQ"}'
   ````
@@ -60,12 +69,16 @@ Execute `mvn spring-boot:run`
 After running the application goto 
 > `http://localhost:8080/swagger-ui.html` 
 
+_**Actuator Shutdown endpoint has been turned off and in the place a custom shutdown endpoint has been provided for a graceful shutdown hook**_
+> curl -X POST localhost:8080/v1/shutdown
+
 _TODO_
- - [x] Create a Generic SLF4J logger which can be inject to gereric bean generator and can be used across the project 
+ - [x] Create a Generic SLF4J logger which can be inject to generic bean generator and can be used across the project 
  - [x] Implement Swagger
+ - [x] A custom starter can be referred from jfrog artifactory directly
  - [ ] Onboard the application to Jenkins
  - [ ] Dockerized this application
- - [ ] Provide an endpoint for a graceful shutdown
+ - [x] Provide an endpoint for a graceful shutdown
  - [ ] Enable Prometheus Monitoring
  
 [Guidance to write well formatted readme file](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)

@@ -1,2 +1,21 @@
+management:
+  context-path: /manage
+  endpoint:
+    shutdown:
+      enabled: false
+  endpoints:
+    web:
+      cors:
+        allowed-methods: GET,POST
+      exposure:
+        include: '*'
+  security:
+    enabled: true
+    roles: Admin
 server:
   port: 8080
+spring:
+  devtools:
+    remote:
+      debug:
+        local-port: 8010
