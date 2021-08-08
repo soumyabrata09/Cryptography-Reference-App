@@ -19,7 +19,7 @@ mvn clean install
 
 To run Locally:
 Add the following dependency into the pom.xml
-````
+````xml
     <dependency>
         <groupId>com.sam09.lib</groupId>
         <artifactId>cryptography-starter</artifactId>
@@ -53,7 +53,7 @@ Execute `mvn spring-boot:run`
   ````
  **Swagger Implementation**
  Include the following dependencies in the pom file
-````
+````xml
   <dependency>
     <groupId>io.springfox</groupId>
 	<artifactId>springfox-swagger2</artifactId>
@@ -67,13 +67,13 @@ Execute `mvn spring-boot:run`
 ```` 
 
 After running the application goto 
-> `http://localhost:8080/swagger-ui.html` 
+> http://localhost:8080/swagger-ui.html 
 
 _**Actuator Shutdown endpoint has been turned off and in the place a custom shutdown endpoint has been provided for a graceful shutdown hook**_
 > curl -X POST localhost:8080/v1/shutdown
 
 **Jfrog Integration**
-````
+````xml
 <!--Jfrog artifactory integration-->
 	<distributionManagement>
 		<repository>
@@ -91,9 +91,31 @@ _**Actuator Shutdown endpoint has been turned off and in the place a custom shut
 
 **To publish artifact to jfrog**
 > mvn clean install deploy 
-> Snapshots will be published to (  https://soumyabrata09.jfrog.io/artifactory/sam09-libs-snapshot/com/sam09/cryptography/reference-app/
+> Snapshots will be published to (https://soumyabrata09.jfrog.io/artifactory/sam09-libs-snapshot/com/sam09/cryptography/reference-app/
 
+**Prometheus Integration**
 
+![Docker Impl](https://via.placeholder.com/15/f03c15/000000?text=+) `Docker should be installed and running locally.`
+
+- > Install prometheus binaries
+  ````
+  docker pull prom/prometheus
+  ````
+- > Include following dependency into pom file
+  ````xml
+  <!-- Micrometer Prometheus registry  -->
+  <dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-registry-prometheus</artifactId>
+  </dependency>
+  ````
+- > Create prometheus.yaml file into resources
+- > Execute the following command to start prometheus server on http://localhost:9090 
+  ````
+  docker run -d -p 9090:9090 \
+    -v path_to_your_yaml_resources/prometheus.yml:/etc/prometheus/prometheus.yml \
+    prom/prometheus
+  ````
 _Action Item_
  - [x] Create a Generic SLF4J logger which can be inject to generic bean generator and can be used across the project 
  - [x] Implement Swagger
@@ -102,6 +124,6 @@ _Action Item_
  - [ ] Dockerized this application
  - [x] Jfrog Integration Done
  - [x] Provide an endpoint for a graceful shutdown
- - [ ] Enable Prometheus Monitoring
+ - [x] Enable Prometheus Monitoring
  
 [Guidance to write well formatted readme file](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
