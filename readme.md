@@ -32,7 +32,7 @@ Add the following dependency into the pom.xml
 		<version>1.0.0-SNAPSHOT</version>
 	</dependency>
 ````
-> version tag can be used from the jfrog artifactorty 
+> ![Version Impl](https://via.placeholder.com/15/f03c15/000000?text=+) version tag can be used from the jfrog artifactorty 
 
 Change `server.port=<Desired Port>` in the application.yaml file
 
@@ -95,7 +95,7 @@ _**Actuator Shutdown endpoint has been turned off and in the place a custom shut
 
 **Prometheus Integration**
 
-![Docker Impl](https://via.placeholder.com/15/f03c15/000000?text=+) `Docker should be installed and running locally.`
+> ![Docker Impl](https://via.placeholder.com/15/f03c15/000000?text=+) `Docker should be installed and running locally.`
 
 - > Install prometheus binaries
   ````
