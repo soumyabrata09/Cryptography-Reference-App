@@ -7,6 +7,7 @@ package com.sam09.cryptography.referenceapp.controller;
 import com.sam09.cryptography.referenceapp.constants.ApplicationConstants;
 import com.sam09.cryptography.referenceapp.model.CryptoData;
 import com.sam09.cryptography.referenceapp.service.ICryptographyService;
+import com.sam09.cryptography.referenceapp.service.ShowAPI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class ReferenceController {
         this.service = service;
     }*/
 
+    @ShowAPI
     @RequestMapping(method = RequestMethod.POST, value = ApplicationConstants.ENCRYPT)
     @ResponseBody
     public CompletableFuture<CryptoData> encodeData(@RequestBody CryptoData data) throws UnsupportedEncodingException {
@@ -35,6 +37,7 @@ public class ReferenceController {
         return CompletableFuture.completedFuture(service.getEncryptedData(data));
     }
 
+    @ShowAPI
     @RequestMapping(method = RequestMethod.POST, value = ApplicationConstants.DECRYPT)
     @ResponseBody
     public CompletableFuture<CryptoData> decodeData(@RequestBody CryptoData data){

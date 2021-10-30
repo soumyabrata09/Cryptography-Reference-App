@@ -67,8 +67,10 @@ Execute `mvn spring-boot:run`
 ```` 
 
 After running the application goto 
-> http://localhost:8080/swagger-ui.html 
-
+> http://localhost:8080/swagger-ui.html
+````
+To include any API's details in swagger implementation annotate the method in the controller class with @ShowAPI
+````
 _**Actuator Shutdown endpoint has been turned off and in the place a custom shutdown endpoint has been provided for a graceful shutdown hook**_
 > curl -X POST localhost:8080/v1/shutdown
 

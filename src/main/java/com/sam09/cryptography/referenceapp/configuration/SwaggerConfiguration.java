@@ -5,6 +5,7 @@
 package com.sam09.cryptography.referenceapp.configuration;
 
 import com.sam09.cryptography.referenceapp.constants.ApplicationConstants;
+import com.sam09.cryptography.referenceapp.service.ShowAPI;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
@@ -24,7 +25,7 @@ public class SwaggerConfiguration {
     public Docket apiDocket(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage(ApplicationConstants.BASE_PACKAGE))
+                .apis(RequestHandlerSelectors.withMethodAnnotation(ShowAPI.class))
                 .paths(PathSelectors.ant(ApplicationConstants.PATH_SELECTOR))
                 .build()
                 .useDefaultResponseMessages(Boolean.TRUE)

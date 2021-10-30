@@ -46,7 +46,7 @@
 		<dependency>
 			<groupId>com.sam09.lib</groupId>
 			<artifactId>cryptography-starter</artifactId>
-			<version>1.0.0-20210807.084234-1</version>
+			<version>1.0.0-20210807.142340-4</version>
 		</dependency>
 		<!--custom jackson starter-->
 		<dependency>

@@ -6,7 +6,7 @@ management:
   endpoints:
     web:
       cors:
-        allowed-methods: GET,POST
+        allowed-methods: GET,POST,PUT
       exposure:
         include: '*'
   security:
