@@ -1,6 +1,7 @@
 package com.sam09.cryptography.referenceapp.constants;
 
 public class ApplicationConstants {
+    public static final String CHARSET_UTF8 = "utf8";
     public static final String BASE_PACKAGE = "com.sam09.cryptography.referenceapp.controller";
     public static final String PATH_SELECTOR = "/v1/**";
     public static final String TITLE = "Reference Cryptography Application";

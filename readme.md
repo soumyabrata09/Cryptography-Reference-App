@@ -67,7 +67,7 @@ Execute `mvn spring-boot:run`
 ```` 
 
 After running the application goto 
-> http://localhost:8080/swagger-ui.html
+> http://localhost:8081/swagger-ui.html
 ````
 To include any API's details in swagger implementation annotate the method in the controller class with @ShowAPI
 ````

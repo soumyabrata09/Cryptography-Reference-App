@@ -30,7 +30,9 @@ public class ReferenceController {
     }*/
 
     @ShowAPI
-    @RequestMapping(method = RequestMethod.POST, value = ApplicationConstants.ENCRYPT)
+    @RequestMapping(method = RequestMethod.POST,
+            value = ApplicationConstants.ENCRYPT,
+            consumes = "application/json")
     @ResponseBody
     public CompletableFuture<CryptoData> encodeData(@RequestBody CryptoData data) throws UnsupportedEncodingException {
         log.info("Encrypt API Called");
@@ -38,7 +40,9 @@ public class ReferenceController {
     }
 
     @ShowAPI
-    @RequestMapping(method = RequestMethod.POST, value = ApplicationConstants.DECRYPT)
+    @RequestMapping(method = RequestMethod.POST,
+            value = ApplicationConstants.DECRYPT,
+            consumes = "application/json")
     @ResponseBody
     public CompletableFuture<CryptoData> decodeData(@RequestBody CryptoData data){
         log.info("Decrypt API Called");
