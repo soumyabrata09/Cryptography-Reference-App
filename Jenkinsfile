@@ -9,7 +9,7 @@ pipeline {
                 sh([script: './mvnw -e clean install -DskipTests'])
             }
         }
-        stage {
+        stage('Test') {
             steps {
                 sh([script: './mvnw clean test'])
             }
