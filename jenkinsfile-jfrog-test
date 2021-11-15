@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+    triggers {
+        pollSCM 'H/5 * * * *' /*runs every 5 minutes */
+    }
+    stages {
+        stage('Jfrog Artifactory Connect') {
+            steps {
+                rtServer (
+                        id: "sam09-Jfrog-Atricatory",
+                        url: 'https://soumyabrata09.jfrog.io/artifactory',
+                        username: 'soumyabratasen@hotmail.com',
+                        password: 'Sam09@jfrog',
+                        bypassProxy: true,
+                        timeout: 300
+                )
+            }
+        }
+        stage('Artifact Download'){
+            steps{
+                rtDownload (
+                        serverId:"sam09-Jfrog-Atricatory" ,
+                        spec: '''{
+                   "files": [
+                      {
+                      "pattern": "*/*.jar",
+                      "target": "sam09-libs-snapshot-local/com/sam09/"
+                      }
+                            ]
+                           }''',
+                )
+            }
+        }
+        stage('Git CheckOut') {
+            steps {
+                git branch: 'master', url: 'https://github.com/soumyabrata09/Cryptography-Reference-App.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh([script: './mvnw  -U -e clean install -DskipTests'])
+            }
+        }
+        stage('Test') {
+            steps {
+                sh([script: './mvnw clean test'])
+            }
+        }
+    }
+}
